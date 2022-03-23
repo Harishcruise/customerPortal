@@ -16,10 +16,15 @@
         <p class="font-mono font-bold text-2xl">Customer Login</p>
         <div class="flex flex-col" [formGroup]="LoginForm">
           <label class="font-mono block text-lg  font-bold " for="User-Name">UserName</label>
-          <input class="drop-shadow-lg shadow-red-800 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-300" id="User-Name"type="text" formControlName="UserName" >
+          <input class="drop-shadow-lg shadow-red-800 bg- appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white" id="User-Name"type="text" formControlName="UserName" >
           <label class="font-mono block text-lg  font-bold mt-4" for="Pass">Password</label>
-          <input class="drop-shadow-lg shadow-red-800 bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-300" id="Pass" type="password" formControlName="Password" >
-      </div>
+          <div class="flex drop-shadow-lg shadow-red-800 bg-white appearance-none border-2 border-gray-200 rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-300">
+          <input [type]="hide ? 'password':'text'" class="w-full py-2 px-4 bg-white appearance-none rounded text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-300" id="Pass" type="password" formControlName="Password" >
+          <i class="material-icons mt-1 mr-2 cursor-pointer" (click)="VisOff()" matSuffix>
+            <!-- {{hide ? 'visibility' : 'visibility_off}} -->
+            {{type}}
+          </i></div>
+        </div>
       <button routerLink="/home" (click)="Login()" class="font-bold text-xl font-mono shadow-lg shadow-slate-300 rounded-3xl transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:border-x-gray-400 duration-300 w-40 h-10">Login</button>
       </div>
       <!-- <div class="border-l-2 border-l-blue-200 rounded-t-3xl rounded-b-3xl m-20 flex flex-shrink-0"></div> -->
