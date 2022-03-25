@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -7,7 +8,7 @@ import { FormBuilder } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder,private auth: AuthService ) { 
     console.log(this.hide,this.type)
   }
 
@@ -27,9 +28,11 @@ export class LoginComponent implements OnInit {
     this.hide= !this.hide;
     this.type= this.hide? 'visibility' : 'visibility_off'
   }
-
+  
   Login(){
     console.log(this.LoginForm.value);
+    localStorage.setItem(this.LoginForm.value.UserName,this.LoginForm.value.Password);
+    this.auth.LoggedIn(this.LoginForm.value.UserName);
   }
 
 }

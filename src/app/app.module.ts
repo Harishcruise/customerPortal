@@ -21,6 +21,9 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuardGuard } from './guard/auth-guard.guard';
+import { AuthService } from './services/auth.service';
+import { LoginGuardGuard } from './guard/login-guard.guard';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MdbValidationModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [AuthGuardGuard,AuthService,LoginGuardGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
